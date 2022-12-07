@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Fungus;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -64,12 +65,14 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-        [Header("Animations")]		
-		//animator
-		public Animator animator;
+		[Header("Fungus")]
+		//Fungus Interaction
+		public Flowchart flowchart;
+		public Interactable currentInteractable;
+		public bool inDialogue;
 
 
-	
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		private PlayerInput _playerInput;
 #endif
@@ -117,9 +120,18 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			JumpAndGravity();
-			GroundedCheck();
-			Move();
+			if (!inDialogue)
+            {
+				JumpAndGravity();
+				GroundedCheck();
+				Move();
+				Interact();
+			}
+
+			if (inDialogue)
+            {
+				/// Set canMove and canPhotograph to false
+            }
 		}
 
 		private void LateUpdate()
@@ -202,15 +214,6 @@ namespace StarterAssets
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
-			if (_speed > 0.1)
-			{
-				animator.SetBool("isMoving", true);
-
-			}
-			else if (_speed < 0.1)
-			{
-				animator.SetBool("isMoving", false);
-					}
 		}
 
 		private void JumpAndGravity()
@@ -259,6 +262,35 @@ namespace StarterAssets
 			{
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
+		}
+
+		private void OnTriggerEnter(Collider collision)
+		{
+			Interactable interactable = collision.GetComponent<Interactable>();
+			if (interactable)
+			{
+				currentInteractable = interactable;
+			}
+		}
+		private void OnTriggerExit(Collider collision)
+		{
+			currentInteractable = null;
+		}
+		private void Interact()
+		{
+			if (!currentInteractable)
+			{
+				if (Input.GetKeyDown(KeyCode.E))
+				{
+					flowchart.ExecuteBlock(currentInteractable.blockName);
+					inDialogue = true;
+				}
+			}
+		}
+		public void ExitBlock()
+		{
+			inDialogue = false;
+			//Set canPhotograph and canMove to false
 		}
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
