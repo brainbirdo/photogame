@@ -76,7 +76,7 @@ public class PhotoCapture : MonoBehaviour
 
    IEnumerator RemovePhoto()
    {
-       yield return new WaitForSeconds(4);
+       yield return new WaitForSeconds(2);
        viewingPhoto = false;
        photoFrame.SetActive(false);
        //CameraUI true

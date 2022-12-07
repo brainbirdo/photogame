@@ -64,6 +64,10 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+		//animator
+		public Animator animator;
+
+
 	
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		private PlayerInput _playerInput;
@@ -115,6 +119,15 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+
+			if (SprintSpeed > 0)
+            {
+				animator.SetBool("isMoving", true);
+            }
+			else
+            {
+				animator.SetBool("isMoving", false);
+            }
 		}
 
 		private void LateUpdate()
