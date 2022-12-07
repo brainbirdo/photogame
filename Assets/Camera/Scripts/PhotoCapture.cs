@@ -13,7 +13,8 @@ public class PhotoCapture : MonoBehaviour
    [SerializeField] private GameObject cameraFlash;
    [SerializeField] private float flashTime;
 
-   [Header]
+    [Header("Photo Fader Effect")]
+    [SerializeField] private Animator fadingAnimation;
 
    private Texture2D screenCapture;
    private bool viewingPhoto;
@@ -26,18 +27,17 @@ public class PhotoCapture : MonoBehaviour
 
    private void Update()
    {
-       if (Input.GetKeyDown(KeyCode.Mouse0))
-       {
-           if(!viewingPhoto)
-           {
-           StartCoroutine(CapturePhoto());
-           }
-           else
-           {
-               RemovePhoto();
-
-           }
-       }
+      if (Input.GetKey(KeyCode.Mouse1))
+            {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                if (!viewingPhoto)
+                {
+                    StartCoroutine(CapturePhoto());
+                }
+            }
+        }
+     
    }
 
    IEnumerator CapturePhoto()
@@ -51,6 +51,7 @@ public class PhotoCapture : MonoBehaviour
        screenCapture.ReadPixels(regionToRead, 0, 0, false);
        screenCapture.Apply();
        ShowPhoto();
+       StartCoroutine(RemovePhoto());
    }
 
    void ShowPhoto()
@@ -60,6 +61,7 @@ public class PhotoCapture : MonoBehaviour
 
        photoFrame.SetActive(true);
        StartCoroutine(CameraFlashEffect());
+        fadingAnimation.Play("PhotoFade");
    }
 
    IEnumerator CameraFlashEffect()
@@ -72,8 +74,9 @@ public class PhotoCapture : MonoBehaviour
 
    }
 
-   void RemovePhoto()
+   IEnumerator RemovePhoto()
    {
+       yield return new WaitForSeconds(4);
        viewingPhoto = false;
        photoFrame.SetActive(false);
        //CameraUI true
