@@ -64,6 +64,7 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+        [Header("Animations")]		
 		//animator
 		public Animator animator;
 
@@ -119,15 +120,6 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
-
-			if (SprintSpeed > 0)
-            {
-				animator.SetBool("isMoving", true);
-            }
-			else
-            {
-				animator.SetBool("isMoving", false);
-            }
 		}
 
 		private void LateUpdate()
@@ -209,6 +201,16 @@ namespace StarterAssets
 
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
+			if (_speed > 0.1)
+			{
+				animator.SetBool("isMoving", true);
+
+			}
+			else if (_speed < 0.1)
+			{
+				animator.SetBool("isMoving", false);
+					}
 		}
 
 		private void JumpAndGravity()
