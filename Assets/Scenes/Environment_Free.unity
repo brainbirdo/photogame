@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 359, y: 46}
+  scrollPos: {x: 477, y: 35}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -681,8 +681,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 388864502}
-  selectedCommands:
-  - {fileID: 388864503}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -791,8 +790,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 370
-    y: 69
+    x: 70
+    y: 118
     width: 101
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -834,7 +833,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &388864504
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -946,6 +945,11 @@ Transform:
   m_Father: {fileID: 201706615}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &552693508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8404645861020571502, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
+  m_PrefabInstance: {fileID: 835066493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &610274169 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4015687118796335057, guid: 29c774dacdcc73240b0c71228fdc6f2c, type: 3}
@@ -965,6 +969,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6930846376202869729, guid: 06585c4a497d08f4591a54ccfdb05bcf, type: 3}
+--- !u!82 &669366277 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 125250757403731935, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
+  m_PrefabInstance: {fileID: 835066493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &673498627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7962199819078159310, guid: f5b41ba4c79702547a89de7544b80656, type: 3}
@@ -1082,10 +1091,19 @@ PrefabInstance:
       value: PolaroidCapture
       objectReference: {fileID: 0}
     - target: {fileID: 477458250426564826, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
+      propertyPath: cameraUI
+      value: 
+      objectReference: {fileID: 552693508}
+    - target: {fileID: 477458250426564826, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
+      propertyPath: cameraAudio
+      value: 
+      objectReference: {fileID: 669366277}
+    - target: {fileID: 477458250426564826, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
       propertyPath: cameraFlash
       value: 
       objectReference: {fileID: 2036800463}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6298602056937954451, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
 --- !u!1 &996878104
 GameObject:
