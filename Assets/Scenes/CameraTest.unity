@@ -595,6 +595,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &762211337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 477458250426564826, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
+  m_PrefabInstance: {fileID: 477458251283968391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b79c800cca91f249833ae58310b3b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &1113747577
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1056,6 +1067,7 @@ MonoBehaviour:
   Fov: 0
   sensitivity: 10
   vcam: {fileID: 1288997972}
+  canZoom: 0
 --- !u!1 &1600870358 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8404645861020571502, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
@@ -1523,9 +1535,17 @@ PrefabInstance:
       value: PolaroidCapture
       objectReference: {fileID: 0}
     - target: {fileID: 477458250426564826, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
+      propertyPath: vcam
+      value: 
+      objectReference: {fileID: 1288997972}
+    - target: {fileID: 477458250426564826, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
       propertyPath: cameraUI
       value: 
       objectReference: {fileID: 1600870358}
+    - target: {fileID: 477458250426564826, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
+      propertyPath: cameraZoom
+      value: 
+      objectReference: {fileID: 1592866257}
     - target: {fileID: 477458250426564826, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
       propertyPath: cameraAudio
       value: 
@@ -1534,6 +1554,10 @@ PrefabInstance:
       propertyPath: cameraFlash
       value: 
       objectReference: {fileID: 1840138322}
+    - target: {fileID: 477458250426564826, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
+      propertyPath: photoCapture
+      value: 
+      objectReference: {fileID: 762211337}
     - target: {fileID: 3628491317484801228, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 20

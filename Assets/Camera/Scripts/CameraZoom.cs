@@ -25,7 +25,7 @@ void Update()
         }
         if (!canZoom)
         {
-            Fov = 40f;
+            vcam.m_Lens.FieldOfView = 40;
         }
     }
 }
