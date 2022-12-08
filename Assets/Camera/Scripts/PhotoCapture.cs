@@ -63,6 +63,13 @@ public class PhotoCapture : MonoBehaviour
                 }
             }
         }
+
+      if (takingPhoto == false)
+        {
+            cameraUI.SetActive(false);
+            cameraZoom.canZoom = false;
+            cameraFlash.SetActive(false);
+        }
    }
 
    IEnumerator CapturePhoto()

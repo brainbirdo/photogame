@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Cinemachine;
 
 public class CameraZoom : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class CameraZoom : MonoBehaviour
  public float maxFov = 40f;
  public float Fov;
  public float sensitivity = 10f;
- public CinemachineVirtualCamera vcam;
+ public Camera cam;
 
  public bool canZoom;
  
@@ -18,14 +17,14 @@ void Update()
     {
         if (canZoom)
         {
-            Fov = Camera.main.fieldOfView;
+            float Fov = cam.fieldOfView;
             Fov += (Input.GetAxis("Mouse ScrollWheel") * sensitivity) * -1;
             Fov = Mathf.Clamp(Fov, minFov, maxFov);
-            vcam.m_Lens.FieldOfView = Fov;
+            cam.fieldOfView = Fov;
         }
         if (!canZoom)
         {
-            vcam.m_Lens.FieldOfView = 40;
+            cam.fieldOfView = 40;
         }
     }
 }
