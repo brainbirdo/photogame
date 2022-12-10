@@ -8,12 +8,12 @@ public class DayNightCycle : MonoBehaviour
 
     void Start()
     {
-        skybox.SetRange("_CubemapTransition", 0);
+        skybox.SetFloat("_CubemapTransition", 0);
 
     }
 
     void Update()
     {
-        skybox.SetRange("_CubemapTransition", 1);
+        skybox.SetFloat("_CubemapTransition", 1);
     }
 }
