@@ -9,6 +9,8 @@ public class WeatherDetection : MonoBehaviour
     public bool isRainy;
     public bool isFoggy;
 
+    public DayNightCycle dayNight;
+
     public GameObject night;
     public GameObject day;
     public GameObject rainy;
@@ -25,9 +27,11 @@ public class WeatherDetection : MonoBehaviour
     public bool fogCaptured;
 
 
+
     void Update()
     {
-
+        TimeOfDayCheck();
+        WeatherCheck();
         /// Whichever has been captured will be shown
         if (photoCapture.viewingPhoto)
         {
@@ -77,5 +81,22 @@ public class WeatherDetection : MonoBehaviour
             foggy.SetActive(false);
             rainy.SetActive(false);
         }
+    }
+
+    void TimeOfDayCheck()
+    {
+        if (dayNight.timeOfDay <= 0.5)
+        {
+            isDaytime = true;
+        }
+        if (dayNight.timeOfDay >= 0.5)
+        {
+            isDaytime = false;
+        }
+    }
+
+    void WeatherCheck ()
+    {
+        /// Check for Weather parameters constantly
     }
 }

@@ -5,15 +5,10 @@ using UnityEngine;
 public class DayNightCycle : MonoBehaviour
 {
     public Material skybox;
-
-    void Start()
-    {
-        skybox.SetFloat("_CubemapTransition", 0);
-
-    }
-
+    public float timeOfDay;
     void Update()
     {
-        skybox.SetFloat("_CubemapTransition", 1);
+        timeOfDay = Mathf.PingPong(Time.time, 1.0f);
+        skybox.SetFloat("_CubemapTransition", timeOfDay);
     }
 }

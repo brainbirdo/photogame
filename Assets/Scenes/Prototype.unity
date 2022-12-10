@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06312665, g: 0.25637528, b: 0.45434093, a: 1}
+  m_IndirectSpecularColor: {r: 0.6397445, g: 0.68027174, b: 0.65753967, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skybox: {fileID: 2100000, guid: 5637c31a4595ea547b8c8d0853d6a3e3, type: 2}
+  timeOfDay: 0
 --- !u!1 &832245469
 GameObject:
   m_ObjectHideFlags: 1
