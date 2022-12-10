@@ -1,34 +1,28 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using Cinemachine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class InCameraDetector : MonoBehaviour
-//{
-//    CinemachineVirtualCamera vcam;
-//    MeshRenderer renderer;
-//    Plane[] cameraFrustum;
-//    Collider collider;
+public class InCameraDetector : MonoBehaviour
+{
+    public Camera myCamera;
+    public MeshRenderer myRenderer;
+    Plane[] cameraFrustum;
+    public Collider myCollider;
 
-//    void Start()
-//    {
-//        vcam = vcam.m_Follow;
-//        renderer = GetComponent<MeshRenderer>();
-//        collider = GetComponent<Collider>();
-//    }
+    // Update is called once per frame
+    void Update()
+    {
+        var bounds = myCollider.bounds;
+        cameraFrustum = GeometryUtility.CalculateFrustumPlanes(myCamera);
+        if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds))
+        {
+            Debug.Log("Object in view of camera");
+            // If in view & photo has been taken, set score to XYZ. 
+        }
+        else
+        {
+            Debug.Log("Nothing");
+        }
 
-
-//    void Update()
-//    {
-//        var bounds = collider.bounds;
-//        cameraFrustum = GeometryUtility.CalculateFrustumPlanes(vcam);
-//        if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds))
-//        {
-//            Debug.Log("Captured by Camera");
-//        }
-//        else
-//        {
-//            Debug.Log("Nothing in View");
-//        }
-//    }
-//}
+    }
+}

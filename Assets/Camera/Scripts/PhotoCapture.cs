@@ -9,8 +9,10 @@ public class PhotoCapture : MonoBehaviour
    [SerializeField] private Image photoDisplayArea;
    [SerializeField] private GameObject photoFrame;
    [SerializeField] private GameObject cameraUI;
+   [SerializeField] private GameObject WeatherParameters;
 
-   [Header("Flash Effect")]
+
+    [Header("Flash Effect")]
    [SerializeField] private GameObject cameraFlash;
    [SerializeField] private float flashTime;
 
@@ -24,8 +26,9 @@ public class PhotoCapture : MonoBehaviour
 
     private Texture2D screenCapture;
 
-   private bool viewingPhoto;
+   public bool viewingPhoto;
    public bool takingPhoto;
+   public bool checkingPhoto;
 
    private void Start()
    {
@@ -70,6 +73,24 @@ public class PhotoCapture : MonoBehaviour
             cameraZoom.canZoom = false;
             cameraFlash.SetActive(false);
         }
+
+      if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!takingPhoto && !checkingPhoto)
+            {
+                checkingPhoto = true; 
+                photoFrame.SetActive(true);
+                WeatherParameters.SetActive(true);
+            }
+
+            else
+            {
+                checkingPhoto = false;
+                photoFrame.SetActive(false);
+                WeatherParameters.SetActive(false);
+            }
+        }
+
    }
 
    IEnumerator CapturePhoto()

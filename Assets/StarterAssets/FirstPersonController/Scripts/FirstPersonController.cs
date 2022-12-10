@@ -65,12 +65,6 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-		[Header("Fungus")]
-		//Fungus Interaction
-		public Flowchart flowchart;
-		public Interactable currentInteractable;
-		public bool inDialogue;
-
 
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -120,18 +114,9 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			if (!inDialogue)
-            {
 				JumpAndGravity();
 				GroundedCheck();
 				Move();
-				Interact();
-			}
-
-			if (inDialogue)
-            {
-				/// Set canMove and canPhotograph to false
-            }
 		}
 
 		private void LateUpdate()
@@ -264,34 +249,7 @@ namespace StarterAssets
 			}
 		}
 
-		private void OnTriggerEnter(Collider collision)
-		{
-			Interactable interactable = collision.GetComponent<Interactable>();
-			if (interactable)
-			{
-				currentInteractable = interactable;
-			}
-		}
-		private void OnTriggerExit(Collider collision)
-		{
-			currentInteractable = null;
-		}
-		private void Interact()
-		{
-			if (!currentInteractable)
-			{
-				if (Input.GetKeyDown(KeyCode.E))
-				{
-					flowchart.ExecuteBlock(currentInteractable.blockName);
-					inDialogue = true;
-				}
-			}
-		}
-		public void ExitBlock()
-		{
-			inDialogue = false;
-			//Set canPhotograph and canMove to false
-		}
+
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
