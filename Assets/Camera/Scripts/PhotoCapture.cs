@@ -26,6 +26,8 @@ public class PhotoCapture : MonoBehaviour
 
     private Texture2D screenCapture;
 
+    public WeatherDetection weatherDetection;
+
    public bool viewingPhoto;
    public bool takingPhoto;
    public bool checkingPhoto;
@@ -95,6 +97,7 @@ public class PhotoCapture : MonoBehaviour
 
    IEnumerator CapturePhoto()
    {
+       WeatherCaptureCheck();
        cameraUI.SetActive(false);
        viewingPhoto = true;
        yield return new WaitForEndOfFrame();
@@ -133,4 +136,46 @@ public class PhotoCapture : MonoBehaviour
        photoFrame.SetActive(false);
        cameraUI.SetActive(true);
    }
+
+    void WeatherCaptureCheck()
+    {
+        if (weatherDetection.isDaytime)
+        {
+            weatherDetection.dayCaptured = true;
+        }
+
+        if (!weatherDetection.isDaytime)
+        {
+            weatherDetection.dayCaptured = false;
+        }
+
+        if (weatherDetection.isRainy)
+        {
+            weatherDetection.rainCaptured = true;
+            weatherDetection.fogCaptured = false;
+            weatherDetection.clearCaptured= false;
+        }
+
+        if (!weatherDetection.isRainy)
+        {
+            weatherDetection.rainCaptured = false;
+        }
+
+        if (weatherDetection.isFoggy)
+        {
+            weatherDetection.fogCaptured = true;
+            weatherDetection.rainCaptured = false;
+            weatherDetection.clearCaptured = false;
+        }
+
+        if (!weatherDetection.isFoggy)
+        {
+            weatherDetection.fogCaptured = false;
+        }
+
+        if (!weatherDetection.isFoggy && !weatherDetection.isRainy)
+        {
+            weatherDetection.clearCaptured = true;
+        }
+    }
 }

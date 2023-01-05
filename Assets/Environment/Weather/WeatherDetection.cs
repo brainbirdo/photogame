@@ -85,11 +85,11 @@ public class WeatherDetection : MonoBehaviour
 
     void TimeOfDayCheck()
     {
-        if (dayNight.timeOfDay <= 0.5)
+        if (dayNight.timeOfDay <= 0.7)
         {
             isDaytime = true;
         }
-        if (dayNight.timeOfDay >= 0.5)
+        if (dayNight.timeOfDay > 0.7)
         {
             isDaytime = false;
         }
@@ -99,4 +99,5 @@ public class WeatherDetection : MonoBehaviour
     {
         /// Check for Weather parameters constantly
     }
+
 }

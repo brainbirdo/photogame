@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6398127, g: 0.68032897, b: 0.657569, a: 1}
+  m_IndirectSpecularColor: {r: 0.8216559, g: 0.8805305, b: 0.8252203, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -247,7 +247,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26850
+  m_Name: pb_Mesh28500
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1148,6 +1148,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1946038127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946038129}
+  - component: {fileID: 1946038128}
+  m_Layer: 0
+  m_Name: SkyboxControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1946038128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946038127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87241f892a2ff145b6c73a012f142ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skybox: {fileID: 2100000, guid: 5637c31a4595ea547b8c8d0853d6a3e3, type: 2}
+  timeOfDay: 0
+  transitionDuration: 240
+--- !u!4 &1946038129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946038127}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.581414, y: 1.636548, z: 1.8170261}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2052396862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8659311886187851430, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
@@ -1249,6 +1296,10 @@ PrefabInstance:
       propertyPath: photoCapture
       value: 
       objectReference: {fileID: 762211337}
+    - target: {fileID: 477458250426564826, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
+      propertyPath: weatherDetection
+      value: 
+      objectReference: {fileID: 6217529479277081092}
     - target: {fileID: 477458250432828083, guid: f3672820a0a11c742938b3b03b1e1e9f, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -1428,6 +1479,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 716641276}
     - target: {fileID: 3068733182451602851, guid: 70ddcddda019b754fa21a448790d9d7f, type: 3}
+      propertyPath: dayNight
+      value: 
+      objectReference: {fileID: 1946038128}
+    - target: {fileID: 3068733182451602851, guid: 70ddcddda019b754fa21a448790d9d7f, type: 3}
       propertyPath: photoCapture
       value: 
       objectReference: {fileID: 762211337}
@@ -1437,25 +1492,17 @@ PrefabInstance:
       objectReference: {fileID: 1846919563}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70ddcddda019b754fa21a448790d9d7f, type: 3}
---- !u!1 &6217529479277081090 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2440251977222524698, guid: 70ddcddda019b754fa21a448790d9d7f, type: 3}
+--- !u!114 &6217529479277081092 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3068733182451602851, guid: 70ddcddda019b754fa21a448790d9d7f, type: 3}
   m_PrefabInstance: {fileID: 6217529479277081089}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6217529479277081091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6217529479277081090}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f87241f892a2ff145b6c73a012f142ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bf755cf967671b47b77d7ff025f1d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skybox: {fileID: 2100000, guid: 5637c31a4595ea547b8c8d0853d6a3e3, type: 2}
-  timeOfDay: 0
 --- !u!1 &8009214587546388137 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4138641090905388200, guid: 70ddcddda019b754fa21a448790d9d7f, type: 3}
