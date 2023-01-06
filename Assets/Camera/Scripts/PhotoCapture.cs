@@ -28,6 +28,7 @@ public class PhotoCapture : MonoBehaviour
 
     public WeatherDetection weatherDetection;
     public ObjectDetector objDetect;
+    public ScoreManager scoreManager;
 
     public bool viewingPhoto;
     public bool takingPhoto;
@@ -99,6 +100,7 @@ public class PhotoCapture : MonoBehaviour
     IEnumerator CapturePhoto()
     {
         WeatherCaptureCheck();
+        scoreManager.ScoreReset();
         objDetect.ObjectDetect();
         cameraUI.SetActive(false);
         viewingPhoto = true;
@@ -118,6 +120,7 @@ public class PhotoCapture : MonoBehaviour
         photoDisplayArea.sprite = photoSprite;
 
         photoFrame.SetActive(true);
+        scoreManager.ScoreCheck();
         StartCoroutine(CameraFlashEffect());
         fadingAnimation.Play("PhotoFade");
     }
