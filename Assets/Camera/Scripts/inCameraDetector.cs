@@ -8,21 +8,19 @@ public class InCameraDetector : MonoBehaviour
     public MeshRenderer myRenderer;
     Plane[] cameraFrustum;
     public Collider myCollider;
+    public bool isInView;
 
-    // Update is called once per frame
     void Update()
     {
         var bounds = myCollider.bounds;
         cameraFrustum = GeometryUtility.CalculateFrustumPlanes(myCamera);
         if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds))
         {
-            Debug.Log("Object in view of camera");
-            // If in view & photo has been taken, set score to XYZ. 
+            isInView = true;
         }
         else
         {
-            Debug.Log("Nothing");
+            isInView = false;
         }
-
     }
 }
