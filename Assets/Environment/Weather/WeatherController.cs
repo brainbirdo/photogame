@@ -8,75 +8,74 @@ public class WeatherController : MonoBehaviour
     public WeatherDetection weatherDetection; // For checking isRainy and isFoggy bools
 
     public GameObject rainSystem;
-    public GameObject fogSystem;
+
+    private System.Random random;
 
     void Start()
     {
+        ClearSkies();
         
+        random = new System.Random();
+        Invoke("GenerateRandomNumber", 60);
+        InvokeRepeating("GenerateRandomNumber", 60, 60);
     }
 
-    void Update()
+    void GenerateRandomNumber()
     {
+        // Generate a random number between 0 and 2.
+        int randomNumber = random.Next(0, 3);
 
-    }
-
-    void WeatherCalling()
-    {
-        if (!weatherDetection.isRainy && !weatherDetection.isFoggy)
+        // Invoke a different method based on the random number.
+        switch (randomNumber)
         {
-            // If there's no weather, start the weather cycle.
-            RainOn();
+            case 0:
+                Debug.Log("0");
+                ClearSkies();
+                break;
+            case 1:
+                Debug.Log("1");
+                RainOn();
+                break;
+            case 2:
+                Debug.Log("2");
+                FogOn();
+                break;
         }
+    }
 
-        else
+    void ClearSkies()
+    {
+        Debug.Log("Clear Skies");
+        weatherDetection.isRainy = false;
+        weatherDetection.isFoggy = false;
+        RenderSettings.fogDensity = 0f;
+        rainSystem.SetActive(false);
+    }
+
+    void RainOn()
+    {
+        if (!weatherDetection.isRainy)
         {
-            if (!weatherDetection.isRainy)
-            {
-                if (!weatherDetection.isFoggy)
-                {
-                    FogOn();
-                }
-                else if (weatherDetection.isFoggy)
-            {
-                    FogOff();
-                }
-            }
-
-            if (!weatherDetection.isFoggy)
-            {
-                if (!weatherDetection.isRainy)
-                {
-                    RainOn();
-                }
-                else if (weatherDetection.isRainy)
-                {
-                    RainOff();
-                }
-            }
+            Debug.Log("Rain On");
+            weatherDetection.isRainy = true;
+            weatherDetection.isFoggy = false;
+            RenderSettings.fogDensity = 0f;
+            rainSystem.SetActive(true);
         }
     }
 
     void FogOn()
     {
-        weatherDetection.isFoggy = true;
-        fogSystem.SetActive(true);
+        if (!weatherDetection.isFoggy)
+        {
+            Debug.Log("Fog On");
+            weatherDetection.isFoggy = true;
+            weatherDetection.isRainy = false;
+            RenderSettings.fogDensity = 0.24f;
+            rainSystem.SetActive(false);
+        }
     }
 
-    void FogOff()
-    {
-        weatherDetection.isFoggy = false;
-        fogSystem.SetActive(false);
-    }
 
-    void RainOn()
-    {
-        weatherDetection.isRainy = true;
-        rainSystem.SetActive(true);
-    }
 
-    void RainOff()
-    {
-        weatherDetection.isRainy = false;
-        rainSystem.SetActive(false);
-    }
 }
