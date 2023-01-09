@@ -16,7 +16,6 @@ public class WeatherController : MonoBehaviour
         ClearSkies();
         
         random = new System.Random();
-        Invoke("GenerateRandomNumber", 60);
         InvokeRepeating("GenerateRandomNumber", 60, 60);
     }
 

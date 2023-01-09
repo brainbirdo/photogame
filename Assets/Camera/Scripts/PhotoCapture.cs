@@ -33,6 +33,7 @@ public class PhotoCapture : MonoBehaviour
     public bool viewingPhoto;
     public bool takingPhoto;
     public bool checkingPhoto;
+    public bool canPhoto = true;
 
     private void Start()
     {
@@ -42,60 +43,64 @@ public class PhotoCapture : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (canPhoto)
         {
-            if (!takingPhoto)
+            if (Input.GetMouseButtonDown(1))
             {
-                takingPhoto = true;
-                cameraUI.SetActive(true);
-                cameraZoom.canZoom = true;
-            }
-            else
-            {
-                takingPhoto = false;
-                cameraUI.SetActive(false);
-                cameraZoom.canZoom = false;
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (takingPhoto)
-            {
-                if (!viewingPhoto)
+                if (!takingPhoto)
                 {
+                    takingPhoto = true;
                     cameraUI.SetActive(true);
                     cameraZoom.canZoom = true;
-                    StartCoroutine(CapturePhoto());
+                }
+                else
+                {
+                    takingPhoto = false;
+                    cameraUI.SetActive(false);
+                    cameraZoom.canZoom = false;
                 }
             }
-        }
 
-        if (takingPhoto == false)
-        {
-            cameraUI.SetActive(false);
-            cameraZoom.canZoom = false;
-            cameraFlash.SetActive(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (!takingPhoto && !checkingPhoto)
+            if (Input.GetMouseButtonDown(0))
             {
-                checkingPhoto = true;
-                photoFrame.SetActive(true);
-                WeatherParameters.SetActive(true);
+                if (takingPhoto)
+                {
+                    if (!viewingPhoto)
+                    {
+                        cameraUI.SetActive(true);
+                        cameraZoom.canZoom = true;
+                        StartCoroutine(CapturePhoto());
+                    }
+                }
             }
 
-            else
+            if (takingPhoto == false)
             {
-                checkingPhoto = false;
-                photoFrame.SetActive(false);
-                WeatherParameters.SetActive(false);
+                cameraUI.SetActive(false);
+                cameraZoom.canZoom = false;
+                cameraFlash.SetActive(false);
             }
-        }
 
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (!takingPhoto && !checkingPhoto)
+                {
+                    checkingPhoto = true;
+                    photoFrame.SetActive(true);
+                    WeatherParameters.SetActive(true);
+                }
+
+                else
+                {
+                    checkingPhoto = false;
+                    photoFrame.SetActive(false);
+                    WeatherParameters.SetActive(false);
+                }
+            }
+
+        }
     }
+ 
 
     IEnumerator CapturePhoto()
     {

@@ -8,7 +8,7 @@ public class ObjectDetector : MonoBehaviour
     public List<GameObject> objectsInView;
     private List<InCameraDetector> detectors;
     public TextMeshProUGUI textElement;
-
+    public Camera myCamera;
 
     void Start()
     {
@@ -31,6 +31,7 @@ public class ObjectDetector : MonoBehaviour
             }
         }
 
+        objectsInView.Sort((x, y) => Vector3.Distance(x.transform.position, myCamera.transform.position).CompareTo(Vector3.Distance(y.transform.position, myCamera.transform.position)));
 
         string objectList = "Greetings from ";
         if (objectsInView.Count > 0)
