@@ -13,9 +13,6 @@ public class DayNightCycle : MonoBehaviour
 
     private float timer;
 
-    public GameObject nullCheck;
-    public TextMeshProUGUI timeDayText;
-    public TextMeshProUGUI cubeMapText;
 
     Color dayColor = new Color(0.86f, 0.70f, 0.55f, 1);
     Color nightColor = new Color(0.38f, 0.40f, 0.49f, 255);
@@ -27,7 +24,6 @@ public class DayNightCycle : MonoBehaviour
         {
             timeOfDay = Mathf.Clamp(timeOfDay, 0, 1);
             skybox.SetFloat("_CubemapTransition", timeOfDay);
-            nullCheck.SetActive(true);
         }
     }
     void Update()
@@ -55,8 +51,5 @@ public class DayNightCycle : MonoBehaviour
         {
             timer -= transitionDuration;
         }
-
-        timeDayText.text = "timeOfDay: " + timeOfDay;
-        cubeMapText.text = "_CubemapTransition: " + skybox.GetFloat("_CubemapTransition");
     }
 }
