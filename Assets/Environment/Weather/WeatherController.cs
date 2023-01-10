@@ -16,7 +16,7 @@ public class WeatherController : MonoBehaviour
         ClearSkies();
         
         random = new System.Random();
-        InvokeRepeating("GenerateRandomNumber", 60, 60);
+        InvokeRepeating("GenerateRandomNumber", 40, 40);
     }
 
     void GenerateRandomNumber()
@@ -70,7 +70,7 @@ public class WeatherController : MonoBehaviour
             Debug.Log("Fog On");
             weatherDetection.isFoggy = true;
             weatherDetection.isRainy = false;
-            RenderSettings.fogDensity = 0.24f;
+            RenderSettings.fogDensity = 0.05f;
             rainSystem.SetActive(false);
         }
     }

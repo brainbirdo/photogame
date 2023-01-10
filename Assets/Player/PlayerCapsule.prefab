@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 2122280720895169382}
   - component: {fileID: 2440251977222524694}
   - component: {fileID: 3068733182451602851}
+  - component: {fileID: 6217529479277081099}
+  - component: {fileID: 6217529479277081106}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -69,10 +71,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2
-  SprintSpeed: 5
+  MoveSpeed: 3
+  SprintSpeed: 6
   RotationSpeed: 1
   SpeedChangeRate: 10
+  CanMove: 1
   JumpHeight: 1.2
   Gravity: -15
   JumpTimeout: 0.1
@@ -235,6 +238,7 @@ MonoBehaviour:
   isDaytime: 0
   isRainy: 0
   isFoggy: 0
+  dayNight: {fileID: 0}
   night: {fileID: 0}
   day: {fileID: 0}
   rainy: {fileID: 0}
@@ -245,6 +249,37 @@ MonoBehaviour:
   rainCaptured: 0
   clearCaptured: 0
   fogCaptured: 0
+--- !u!114 &6217529479277081099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440251977222524698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466efa1ff789fd640a6fe3cfbee169b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weatherDetection: {fileID: 3068733182451602851}
+  rainSystem: {fileID: 0}
+--- !u!114 &6217529479277081106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440251977222524698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141c36dc286957245a65d8565916fef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowchart: {fileID: 0}
+  currentInteractable: {fileID: 0}
+  fpsController: {fileID: 2440251977222524701}
+  photoCap: {fileID: 0}
+  inDialogue: 0
 --- !u!1 &4138641090905388200
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6217529478883337961}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -383,7 +418,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.78679246, g: 0.97270846, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -398,13 +433,13 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 40
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -413,7 +448,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!81 &6217529478883337960

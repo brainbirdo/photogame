@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.516
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1661559271}
-  m_IndirectSpecularColor: {r: 0.01909402, g: 0.04325144, b: 0.10133532, a: 0.516}
+  m_IndirectSpecularColor: {r: 0.11592931, g: 0.14083879, b: 0.15929517, a: 0.516}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09f93a4bcfc503479fa75bf1908bd1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCamera: {fileID: 1986419553}
+  myCamera: {fileID: 0}
   myRenderer: {fileID: 167888566}
   myCollider: {fileID: 167888565}
   isInView: 0
@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09f93a4bcfc503479fa75bf1908bd1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCamera: {fileID: 1986419553}
+  myCamera: {fileID: 0}
   myRenderer: {fileID: 1117538434}
   myCollider: {fileID: 1117538435}
   isInView: 0
@@ -1702,8 +1702,7 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1220557169}
+  selectedBlocks: []
   selectedCommands: []
   variables:
   - {fileID: 1220557118}
@@ -4902,7 +4901,7 @@ MonoBehaviour:
   itemId: 65
   indentLevel: 0
   description: 
-  targetObject: {fileID: 1314363945}
+  targetObject: {fileID: 0}
   targetComponentAssemblyName: TalkToNPC, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
   targetComponentFullname: UnityEngine.Component[]
@@ -5146,11 +5145,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1314363945 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1346877258421491374, guid: 17a300064c8c52e40a6ac604f04da468, type: 3}
-  m_PrefabInstance: {fileID: 1986419551}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1348230843
 GameObject:
   m_ObjectHideFlags: 0
@@ -6006,7 +6000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09f93a4bcfc503479fa75bf1908bd1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCamera: {fileID: 1986419553}
+  myCamera: {fileID: 0}
   myRenderer: {fileID: 1527435066}
   myCollider: {fileID: 1527435065}
   isInView: 0
@@ -7252,10 +7246,6 @@ PrefabInstance:
       propertyPath: WeatherParameters
       value: 
       objectReference: {fileID: 5253371066496999971}
-    - target: {fileID: 7288389468016656222, guid: 17a300064c8c52e40a6ac604f04da468, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.31
-      objectReference: {fileID: 0}
     - target: {fileID: 7288389468126227366, guid: 17a300064c8c52e40a6ac604f04da468, type: 3}
       propertyPath: photoCap
       value: 
@@ -7275,7 +7265,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1872020902253923351, guid: 17a300064c8c52e40a6ac604f04da468, type: 3}
   m_PrefabInstance: {fileID: 1986419551}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314363945}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bf755cf967671b47b77d7ff025f1d75, type: 3}
